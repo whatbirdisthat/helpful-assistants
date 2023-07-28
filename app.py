@@ -1,6 +1,11 @@
+import datetime
 import os
 import gradio as gr
 import openai
+
+from LoggingLogger import LoggingLogger
+
+session_filename = f"./chat-logs/log-{datetime.datetime.now():%Y-%m-%d_%H%M}.md"
 
 the_organisation = os.getenv("OPENAI_ORGANISATION")
 the_api_key = os.getenv("OPENAI_API_KEY")
@@ -13,14 +18,21 @@ openai.api_key = the_api_key
 
 
 def chat_with_openai(message, history):
-    z = openai.ChatCompletion.create(
+    prompt_object = {
+        "prompt": message
+    }
+    LoggingLogger.write_json_to_file(prompt_object, session_filename)
+    response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a business systems expert and analyst"},
             {"role": "user", "content": message}
         ]
     )
-    return z.choices[0].message.content
+    LoggingLogger.write_json_to_file(response, session_filename)
+    response_content = response.choices[0].message.content
+    LoggingLogger.write_interaction_to_file(message, response_content, session_filename)
+    return response_content
 
 
 demo = gr.ChatInterface(chat_with_openai, title="Talk to ChatGPT 📞")
