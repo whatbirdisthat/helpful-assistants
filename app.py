@@ -3,6 +3,7 @@ import os
 import gradio as gr
 import openai
 
+from FakeResponse import create_fake_response
 from LoggingLogger import LoggingLogger
 
 session_filename = f"./chat-logs/log-{datetime.datetime.now():%Y-%m-%d_%H%M}.md"
@@ -22,13 +23,15 @@ def chat_with_openai(message, history):
         "prompt": message
     }
     LoggingLogger.write_json_to_file(prompt_object, session_filename)
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a business systems expert and analyst"},
-            {"role": "user", "content": message}
-        ]
-    )
+    # response = openai.ChatCompletion.create(
+    #     model="gpt-3.5-turbo",
+    #     messages=[
+    #         {"role": "system", "content": "You are a business systems expert and analyst"},
+    #         {"role": "user", "content": message}
+    #     ]
+    # )
+    response = create_fake_response()
+
     LoggingLogger.write_json_to_file(response, session_filename)
     response_content = response.choices[0].message.content
     LoggingLogger.write_interaction_to_file(message, response_content, session_filename)
