@@ -6,4 +6,4 @@ run:
 test:
 	python -m unittest ./tests/TestAnnoyingHackJsonConverter.py
 
-.PHONY: run
+.PHONY: run test
