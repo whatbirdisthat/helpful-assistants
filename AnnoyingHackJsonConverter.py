@@ -1,9 +1,9 @@
 import json
 
 
-def convert_to_json(obj):
+def convert_to_json(obj, pretty_indent=4):
     """
-    This class shouldn't exist?
+    This function shouldn't exist?
     I got the idea from the famous StackOverflow Question: https://stackoverflow.com/q/3768895/1185717
     and the answer https://stackoverflow.com/a/64469761/1185717 which points out that you can just use
     the builtin `vars` as the converter. Why doesn't python just do this?
@@ -11,6 +11,6 @@ def convert_to_json(obj):
     hitting the openai API and waiting for a response, etc.
     """
     if isinstance(obj, dict):
-        return json.dumps(obj)
+        return json.dumps(obj, indent=pretty_indent)
     else:
-        return json.dumps(obj, default=vars)
+        return json.dumps(obj, default=vars, indent=pretty_indent)
