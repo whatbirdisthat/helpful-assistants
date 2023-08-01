@@ -1,9 +1,16 @@
 from datetime import datetime
 
-from AnnoyingHackJsonConverter import convert_to_json
+from helpers.AnnoyingHackJsonConverter import convert_to_json
 
 
 class LoggingLogger:
+    """
+    The LoggingLogger is a class I don't think I actually need.
+    Being so new to Gradio and all the things, I haven't found a logging thing
+    in the framework (yet?).
+    Also, I'm not a fan of to-do comments, but:
+    TODO: this should be an injected thing (the whole app should use DI/IoC)
+    """
 
     @staticmethod
     def write_json_to_file(input_object: object, filename: str):

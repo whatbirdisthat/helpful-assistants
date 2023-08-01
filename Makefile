@@ -3,7 +3,10 @@ run:
 	OPENAI_API_KEY=$$(pass openai/api-key) \
 	python app.py
 
-test:
-	python -m unittest ./tests/TestAnnoyingHackJsonConverter.py
+test-mode:
+	python app.py -t
+
+unit-test:
+	python -m unittest
 
 .PHONY: run test
