@@ -24,7 +24,7 @@ class FakeResponse:
     usage = FakeUsage()
 
 
-def create_fake_response():
+def create_fake_response(message: str):
     fake_response = FakeResponse()
     fake_response.id = "fake-id:92492949293915935"
     fake_response.object = "chat.completion"
@@ -39,8 +39,13 @@ def create_fake_response():
     fake_choice.message.role = "assistant"
     fake_choice.message.content = "fake assistant responded with this fake choice"
     fake_choice.finish_reason = "STOP"
-
+    fake_choice_2 = FakeChoice()
+    fake_choice_2.message.role = "human"
+    fake_choice_2.message.content = message
+    fake_choice_2.finish_reason = None
+    fake_choice_2.index = 1
     fake_response.choices = [
-        fake_choice
+        fake_choice,
+        fake_choice_2
     ]
     return fake_response

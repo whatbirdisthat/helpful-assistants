@@ -7,6 +7,7 @@ test-mode:
 	python app.py -t
 
 unit-test:
-	python -m unittest
+	#python -m unittest ./**/*.py
+	python -m unittest ./**/*.py
 
 .PHONY: run test

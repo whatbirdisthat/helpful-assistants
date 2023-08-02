@@ -12,12 +12,15 @@ ChatGPT (@FakeCommunicator) and is completely deterministic - a controlled envir
 
 """
 import argparse
+
 import gradio as gr
 
 from Communicator import Communicator
-from fakes.FakeCommunicator import FakeCommunicator
+from helpers.LoggingLogger import LoggingLogger
+from clients.OpenAiClient import OpenAiClient
+from fakes.FakeOpenAiClient import FakeOpenAiClient
 
-communicator: Communicator | FakeCommunicator | None = None
+# Acquire configuration from arguments
 parser = argparse.ArgumentParser(
     prog='ProgramName',
     description='What the program does',
@@ -28,11 +31,21 @@ parser.add_argument(
 )
 runtime_args = parser.parse_args()
 
-if runtime_args.test_mode:
-    communicator = FakeCommunicator()
-else:
-    communicator = Communicator()
+# Declare the components
+communicator: Communicator | None = None
+app_client: OpenAiClient | FakeOpenAiClient | None = None
+app_logger: LoggingLogger = LoggingLogger()
 
+# Inflate the components
+if runtime_args.test_mode:
+    app_client = FakeOpenAiClient()
+else:
+    app_client = OpenAiClient()
+
+# Instantiate the Communicator and inject the components
+communicator = Communicator(app_client, app_logger)
+
+# Tell Gradio what we want to do
 demo = gr.ChatInterface(communicator.chat_with_llm, title="Talk to ChatGPT 📞")
 
 if __name__ == "__main__":
