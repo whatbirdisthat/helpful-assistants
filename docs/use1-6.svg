@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="83.446289"
+   height="87.19574"
+   viewBox="0 0 83.446289 87.19574"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient4"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#aaccee;stop-opacity:1;"
+         offset="0"
+         id="stop5" />
+      <stop
+         style="stop-color:#aaccee;stop-opacity:0;"
+         offset="1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#aaccee;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+      <stop
+         style="stop-color:#aaccee;stop-opacity:0;"
+         offset="1"
+         id="stop4" />
+    </linearGradient>
+    <symbol
+       id="Extract">
+      <title
+         id="title13">Extract</title>
+      <desc
+         id="desc13">Removal of one or more specific sets of times from a set. (ISO)</desc>
+      <path
+         d="m 35,115 40,-70 40,70 z"
+         style="stroke-width:2"
+         id="path13" />
+    </symbol>
+    <symbol
+       id="Connector">
+      <title
+         id="title20">Connector</title>
+      <desc
+         id="desc20">Exit to or entry from another part of chart.</desc>
+      <circle
+         cx="75"
+         cy="75"
+         r="20"
+         style="stroke-width:2"
+         id="circle20" />
+    </symbol>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3"
+       id="linearGradient2"
+       x1="77.546181"
+       y1="61.90675"
+       x2="84.192497"
+       y2="52.215206"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4"
+       id="linearGradient6"
+       x1="69.072464"
+       y1="92.471535"
+       x2="103.22086"
+       y2="60.442097"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-1085.6075,-399.67062)">
+    <use
+       xlink:href="#Extract"
+       style="fill:url(#linearGradient6);fill-opacity:1;stroke:#000000"
+       id="use1"
+       transform="translate(1052.3307,370.86635)" />
+    <use
+       xlink:href="#Connector"
+       style="fill:url(#linearGradient2);fill-opacity:1;stroke:#000000"
+       id="use1-6"
+       transform="translate(1051.7733,345.67062)" />
+  </g>
+</svg>
