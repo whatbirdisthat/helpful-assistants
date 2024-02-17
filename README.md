@@ -13,14 +13,64 @@ because the folder `chat-logs` is missing.
 mkdir chat-logs
 ```
 
+## Running the thing
+
+```shell
+# to run the server
+make openai
+# to run the client
+make gradio
+```
+
+There are other options in the `Makefile` too, for running using
+vLLM, textgen, and for serving other models through the openai REST API.
+
+
+---
+
+>what is the second verse of kubla khan
+
+The second verse of "Kubla Khan" by Samuel Taylor Coleridge is as follows:
+"And there were gardens bright with swift-future flowers,/ But even the air was laced with death/ And the cold light of the stars/ Made the pale grass and the fetters rust/ And all the world was old."
+    
+
+---
+
+
+## Code Organisation
+
+The code started as a compact little tool to capture human input, send it to openai and display the response. As my
+plans grew, so too did the complexity of the code, and considering all I had added was a bit of logging and the
+ability to swap in a fake API client for testing, it's clear that Big Balls of Mud (BBOMs) are very easy to create.
+
+Discipline in Source Code Arrangement: naming things and grouping responsibilities, declaring dependencies that are
+required instead of instantiating them, controlling the composition of those dependencies from above to make testing
+and configuration easier, limiting the scope of any given component's responsibility to make the code for that component
+easier to reason about and reducing the cognitive draw overall.
+
+By identifying the absence of Discipline in Source Code Arrangement
+
 **TODO**:
-* LHS Sidebar with "Characters"
-* Each character is some kind of "expert"
-* Each expert provides the system prompt i.e. "You are a scientist" or "You are a literary expert"
-* **Behave**, **Playwright**, **unittest** for outside-in testing
+* LHS Sidebar with "Characters" / "Archetypes"
+  1. Each character is some kind of "expert"
+  2. Each expert provides the system prompt e.g. "You are a scientist" or "You are a literary expert"
+  3. Each expert has access to a "local knowledge repository" which is used to raise the level of knowledge each expert has access to
+* Using a technique I'm calling **"Prompt Enrichment"** the expert resides on the user's machine
+  The human submits a question which is interpreted by the sidecar LLM which then re-writes the question and optimises
+  it for submission to the "big LLM" (say, ChatGPT)
+* Prompt Enrichment uses another technique I'm calling **"Memory Compression"** where the history of the conversation is
+  summarised and prepended to the submission for the big LLM, which achieves two things:
+  1. Reduced cost of submission - fewer tokens sent to the big LLM
+  2. Focused submission - removing extraneous words and using summarisation to maintain context 
+* Testing:
+  1. **Behave** for standardised behaviour assurance
+  2. **Playwright** for browser control
+  3. **unittest** for atomic assurance of code constructs
 
 This is an experiment to see how alterations to system prompt change the way ChatGPT responses to questions differ
-based on the system prompt.
+based on the system prompt. It is also an attempt to build a tool which brings focus and extra power to a user's
+interactions with big LLMs by combining the user's line of inquiry with an AI's expertise in knowledge management and
+speed of retrieval.
 
 ## Setup with Conda
 

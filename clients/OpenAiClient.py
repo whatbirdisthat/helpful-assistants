@@ -1,6 +1,6 @@
 import os
 import openai
-
+from rich import print
 from helpers.ArgumentException import ArgumentException
 
 
@@ -9,10 +9,17 @@ class OpenAiClient:
     def __init__(self):
         the_organisation = os.getenv("OPENAI_ORGANISATION")
         the_api_key = os.getenv("OPENAI_API_KEY")
+        the_url = os.getenv("OPENAI_API_URL")
         if the_organisation is None or the_organisation == "":
             raise EnvironmentError("No OPENAI_ORGANISATION set")
         if the_api_key is None or the_api_key == "":
             raise EnvironmentError("No OPENAI_API_KEY set")
+        if the_url is not None:
+            print(f'Using the url: [green]{the_url}[/]')
+            the_models = openai.Model.list(api_base=the_url)
+            self.model = the_models['data'][0].openai_id
+            openai.api_base = the_url
+            
         openai.organization = the_organisation
         openai.api_key = the_api_key
 
@@ -31,7 +38,7 @@ class OpenAiClient:
                      system_message: str | None = None,
                      ):
         if model is None:
-            model = "gpt-3.5-turbo"
+            model = self.model
 
         self.validate_content(message, system_message)
 

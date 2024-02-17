@@ -1,2 +1,10 @@
-gradio~=3.38.0
-openai~=0.27.4
+gradio
+openai
+vllm
+fschat
+auto-gptq
+optimum
+gradio_client 
+pyyaml
+charset-normalizer~=2.1.0
+chardet
