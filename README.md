@@ -82,6 +82,8 @@ make test-prompt-0 & make test-prompt-1 &
 The above will fire up two servers simultaneously, occupying GPU 0 and 1. It's cool to watch
 `nvtop` while this is happening.
 
+There are some other scripts in the `scripts` folder too, for spinning up a new server and prompting running servers. The [Gum](https://github.com/charmbracelet/gum) cli tool is making things fun on the terminal.
+
 ## Getting a sense of GPU memory management.
 
 Running a "cluster" of models begins to look like a tetris-clone. The shapes of each model are basically rectangular
