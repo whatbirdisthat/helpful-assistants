@@ -20,7 +20,7 @@ class Communicator:
                              self._assistant_definitions.assistant_specialisations.values())
                          if
                          a['label'] == assistant][0]
-        self.assistant = the_assistant[0]
+        self.assistant = the_assistant[0].upper()
 
     def __init__(self, client, logger: LoggingLogger, assistant_definitions: AssistantDefinitions):
         self.openai_client = client
@@ -36,7 +36,7 @@ class Communicator:
         :param history: All the prompts and responses in a big array
         :return: a str containing the content of the response from ChatGPT (or whatever openai model)
         """
-        the_system_prompt = self._assistant_definitions.assistant_specialisations[self.assistant]["system_prompt"]
+        the_system_prompt = self._assistant_definitions.assistant_specialisations[self.assistant.upper()]["system_prompt"]
         the_system_message = f'{the_system_prompt} {self._assistant_definitions.base_prompt}'
 
         prompt_object = {
