@@ -13,6 +13,29 @@ because the folder `chat-logs` is missing.
 mkdir chat-logs
 ```
 
+### vLLM
+
+Before you run `pip install -r requirements.txt` you can comment out the line
+which declares `vLLM` as a dependency. Then, clone the vllm repository and 
+install vllm direct to the conda environment using `pip install -e .`
+
+```
+conda create -yn helpful-assistants python=3.11
+conda activate helpfful-assistants
+cd ~/Code/github/vllm
+pip install -e .
+cd -
+
+pip install -r requirements.txt
+```
+
+The above is a pattern that could be applied to many of this project's dependencies.
+If you want to bring all the repositories down locally and install them 'editable' (the `-e` flag in `pip install -e .`) simply remove those entries from the requirements.txt file before you install _helpful-assistants_.
+
+[x] TODO: re-write this section so it is clearer
+
+
+
 ## Running the thing
 
 ```shell
@@ -36,6 +59,40 @@ The second verse of "Kubla Khan" by Samuel Taylor Coleridge is as follows:
 
 ---
 
+
+## The Makefile
+
+The Makefile contains some patterns for running one or more servers, and testing the output.
+These scripts are smoke tests, to ensure the servers are up and running etc.
+
+To use the default model (dolphin-2.2.1-mistral-7b) run these commands. If you have more than two GPUs
+you'll need to add them to [scripts/vllm-openai.mak](scripts/vllm-openai.mak). The PORT will need to be
+set in the lines you copy and paste.
+```
+make openai-device-0
+make openai-device-1
+```
+
+To run a test against the new LLM cluster use these commands.
+
+```
+make test-prompt-0 & make test-prompt-1 &
+```
+
+The above will fire up two servers simultaneously, occupying GPU 0 and 1. It's cool to watch
+`nvtop` while this is happening.
+
+## Getting a sense of GPU memory management.
+
+Running a "cluster" of models begins to look like a tetris-clone. The shapes of each model are basically rectangular
+but the trick is to keep at least 4G free for inference. The models with larger context require even more inference
+VRAM.
+
+So putting together a set of models ready for swarming:
+
+```
+
+```
 
 ## Code Organisation
 
