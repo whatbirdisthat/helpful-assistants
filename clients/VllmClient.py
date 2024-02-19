@@ -19,7 +19,8 @@ class VllmClient:
             model_identifier = f'{self.base_folder}/{self.models_that_work[model_backend]}'
         self.llm = LLM(
             model=model_identifier,
-            tensor_parallel_size=2
+            tensor_parallel_size=2,
+            gpu_memory_utilization=0.75
         )
 
     def send_content(self, model, message, system_message):
