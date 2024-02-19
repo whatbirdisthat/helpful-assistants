@@ -12,7 +12,7 @@ but describe what you see in your mind.
 
 '''.replace("\n", " ").replace('\t', ' ').replace("  ", " ")
 
-client = Client("http://192.168.1.15:7860/")
+client = Client("http://localhost:7860/")
 
 result = client.predict(
     PROMPT,  # str in 'parameter_6' Textbox component

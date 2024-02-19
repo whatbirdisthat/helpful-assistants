@@ -1,0 +1,22 @@
+{
+    "choices": [
+        {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+                "content": " Link: https://www.celticoutfitters.com/\nCeltic Outfitters, 203 N Main St, Arkadelphia, AR 71923, USA\nCeltic Outfitters: Celtic Outfitters is an Irish-themed online retailer located in Arkadelphia, Arkansas, USA. Celtic Outfitters is a family owned and operated business which was established in 1996. The original store was located in downtown Arkadelphia, Arkansas, but in 2013, the store relocated to a much larger facility on Highway 8, in Arkadelphia, Arkansas. Celtic Outfitters carries a wide range of high quality Irish products including, jewelry, clothing, and gifts. They also have on staff, a professional jewelry maker who can create custom jewelry for customers.\nSearch for Celtic Outfitters in the web..\nCategory: Jewelry Store",
+                "role": "assistant"
+            }
+        }
+    ],
+    "created": 12208,
+    "id": "cmpl-6a5b3c36700b4188b4c274e68840302c",
+    "model": "Llama-2-13b-hf",
+    "object": "chat.completion",
+    "usage": {
+        "completion_tokens": 225,
+        "prompt_tokens": 75,
+        "total_tokens": 300
+    }
+}
+
